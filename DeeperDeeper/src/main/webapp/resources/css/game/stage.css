@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body {
+    background-color: black;
+    color: white;
+    
+    overflow: hidden;
+}
+
+div {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.outer {
+    position: absolute;
+    left: 50%;
+}
+
+.inner {
+    position: relative;
+    left: -50%;
+}
+
+#title {
+	top: 40%;
+}
+
+#start {
+	width: 120px;
+	height: 30px;
+}
+
+#circle {
+	top: 40px;
+}
+
+.circle {
+    position: absolute;
+    left: -400px;
+}
+
+#pack {
+	position: fixed;
+    bottom: 2%;
+}
+
+button {
+	width: 42px;
+	height: 42px;
+	
+	text-align: center;
+	vertical-align: middle;
+	
+	display: inline-block;
+}
+
+#clear {
+	position: fixed;
+	top: 95%;
+	left: 93%;
+}
+
+#back {
+	position: fixed;
+	top: 95%;
+	left: 2%;
+}
