@@ -10,7 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/game/stage.css' />">
 	<script type="text/javascript" src="<c:url value='/resources/js/common/jquery-3.6.0.min.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/game/stage3.js' />"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/game/gameLogic.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/game/common/init.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/game/common/control.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/game/common/check.js' />"></script>
 </head>
 
 <body>
