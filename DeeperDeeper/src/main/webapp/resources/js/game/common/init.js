@@ -2,7 +2,6 @@
 let contextPath;
 let lang;
 
-// 초기화 함수
 $(function() {
 	contextPath = $("#contextPath").val();
 	lang = $("#lang").val();
@@ -12,16 +11,19 @@ $(function() {
 
 // START 버튼 클릭 시 실행할 함수
 function startFunc() {
-	// 화면에서 기존 요소들을 제거하는 함수 실행
+	// 화면에서 기존 요소들을 제거
 	removeTitleAndBtn();
 	
-	// 화면에 게임 요소를 추가하는 함수 실행
+	// 화면에 게임 요소를 추가
 	setGameComponent();
 	
-	// 돌아가기 버튼을 추가하는 함수 실행
-	setTitleBtn();
+	// 키보드 입력 이벤트를 설정(control.js 참고)
+	setKeyupEvent();
 	
-	// 타이머 설정 함수 실행
+	// 화면에 돌아가기 버튼을 추가
+	setReturnBtn();
+	
+	// 타이머를 설정
 	setTimer();
 }
 
@@ -106,7 +108,6 @@ function setCircleImg() {
 
 // 조작 버튼을 추가하는 함수
 function setControlBtn() {
-	// 조작 버튼 추가
 	$("body").append("<div></div>");
 	$("div:last").attr("id", "pack");
 	$("#pack").attr("class", "outer");
@@ -131,7 +132,7 @@ function setClearArea() {
 }
 
 // 메인 화면으로 이동하는 폼과 버튼을 추가하는 함수
-function setTitleBtn() {
+function setReturnBtn() {
 	$("body").append("<div></div>");
 	$("div:last").attr("id", "back");
 	$("#back").append("<form></form>");
@@ -164,8 +165,9 @@ let HH = 0;
 let MM = 0;
 let SS = 0;
 
-// 타이머를 설정하는 함수
+// 타이머 값을 초기화하고 타이머를 시작하는 함수
 function setTimer() {
+	// 타이머 값을 초기화
 	initTimerVal();
 	
 	timerFunc = setInterval(function() {
@@ -200,6 +202,7 @@ function setTimer() {
 	}, 1000);
 }
 
+// 타이머 값을 초기화하는 함수
 function initTimerVal() {
 	HS = $("#HS").val();
 	MS = $("#MS").val();

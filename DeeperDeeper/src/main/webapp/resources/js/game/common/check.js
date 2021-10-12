@@ -1,521 +1,130 @@
 // 스테이지 클리어 여부 판정에 사용할 변수
-let x = 1;
+let x = 0;
 let y = 0;
 let z = 0;
 
-// 스테이지 클리어 설정에 사용할 변수
-let stageCleared = false;
-let effectDeg = 0;
-
 function check() {
-	switch (x) {
-	case 1:
-		switch (A[y]) {
+	switch (circles[x][y]) {
+	case 1: // ┗┓ 왼쪽
+		switch (z) {
+		case 0:
+			x++;
+			y++;
+			if (y > 7) {
+				y = 0;
+			}
+			break;
 		case 1:
-			switch (z) {
-			case 0:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 2:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
-			}
-			break;
-		case 3:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
-			}
-			break;
-		case 4:
-			switch (z) {
-			case 0:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
-			case 1:
-				
-				return 0;
-			}
-			break;
-		case 5:
-			switch (z) {
-			case 0:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 6:
-			switch (z) {
-			case 0:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 7:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 8:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 9:
-			switch (z) {
-			case 0:
-				x++;
-				break;
-			case 1:
-				x--;
-				break;
-			}
-			break;
-		default:
 			return 0;
 		}
 		break;
-	case 2:
-		switch (B[y]) {
+	case 2: // ┗┓ 오른쪽
+		switch (z) {
+		case 0:
+			return 0;
 		case 1:
-			switch (z) {
-			case 0:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
-			case 1:
-				return 0;
+			x--;
+			y--;
+			if (y < 0) {
+				y = 7;
 			}
 			break;
-		case 2:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
+		}
+		break;
+	case 3: // ┏┛ 왼쪽
+		switch (z) {
+		case 0:
+			return 0;
+		case 1:
+			x--;
+			y++;
+			if (y > 7) {
+				y = 0;
 			}
 			break;
-		case 3:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
+		}
+		break;
+	case 4: // ┏┛ 오른쪽
+		switch (z) {
+		case 0:
+			x++;
+			y--;
+			if (y < 0) {
+				y = 7;
 			}
 			break;
-		case 4:
-			switch (z) {
-			case 0:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
-			case 1:
-				
-				return 0;
-			}
-			break;
-		case 5:
-			switch (z) {
-			case 0:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 6:
-			switch (z) {
-			case 0:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 7:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 8:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 9:
-			switch (z) {
-			case 0:
-				x++;
-				break;
-			case 1:
-				x--;
-				break;
-			}
-			break;
-		default:
+		case 1:
 			return 0;
 		}
 		break;
-	case 3:
-		switch (C[y]) {
+	case 5: // ┗┛ 왼쪽
+		switch (z) {
+		case 0:
+			x--;
+			y++;
+			if (y > 7) {
+				y = 0;
+			}
+			z = 1;
+			break;
 		case 1:
-			switch (z) {
-			case 0:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 2:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
-			}
-			break;
-		case 3:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
-			}
-			break;
-		case 4:
-			switch (z) {
-			case 0:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
-			case 1:
-				
-				return 0;
-			}
-			break;
-		case 5:
-			switch (z) {
-			case 0:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 6:
-			switch (z) {
-			case 0:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 7:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 8:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 9:
-			switch (z) {
-			case 0:
-				x++;
-				break;
-			case 1:
-				x--;
-				break;
-			}
-			break;
-		default:
 			return 0;
 		}
 		break;
-	case 4:
-		switch (D[y]) {
+	case 6: // ┗┛ 오른쪽
+		switch (z) {
+		case 0:
+			x--;
+			y--;
+			if (y < 0) {
+				y = 7;
+			}
+			z = 1;
+			break;
 		case 1:
-			switch (z) {
-			case 0:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 2:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
-			}
-			break;
-		case 3:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				break;
-			}
-			break;
-		case 4:
-			switch (z) {
-			case 0:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				break;
-			case 1:
-				
-				return 0;
-			}
-			break;
-		case 5:
-			switch (z) {
-			case 0:
-				x--;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 6:
-			switch (z) {
-			case 0:
-				x--;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 1;
-				break;
-			case 1:
-				return 0;
-			}
-			break;
-		case 7:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y++;
-				if (y > 7) {
-					y = 0;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 8:
-			switch (z) {
-			case 0:
-				return 0;
-			case 1:
-				x++;
-				y--;
-				if (y < 0) {
-					y = 7;
-				}
-				z = 0;
-				break;
-			}
-			break;
-		case 9:
-			switch (z) {
-			case 0:
-				x++;
-				break;
-			case 1:
-				x--;
-				break;
-			}
-			break;
-		default:
 			return 0;
 		}
 		break;
-	case 5:
-		switch (E[y]) {
-		case 1:
-			return 1;
-		default:
+	case 7: // ┏┓ 왼쪽
+		switch (z) {
+		case 0:
 			return 0;
+		case 1:
+			x++;
+			y++;
+			if (y > 7) {
+				y = 0;
+			}
+			z = 0;
+			break;
 		}
+		break;
+	case 8: // ┏┓ 오른쪽
+		switch (z) {
+		case 0:
+			return 0;
+		case 1:
+			x++;
+			y--;
+			if (y < 0) {
+				y = 7;
+			}
+			z = 0;
+			break;
+		}
+		break;
+	case 9: // ┃
+		switch (z) {
+		case 0:
+			x++;
+			break;
+		case 1:
+			x--;
+			break;
+		}
+		break;
+	case -1: // 목표 지점
+		return 1;
 	default:
 		return 0;
 	}
@@ -524,10 +133,14 @@ function check() {
 }
 
 function reset() {
-	x = 1;
+	x = 0;
 	y = 0;
 	z = 0;
 }
+
+// 스테이지 클리어 설정에 사용할 변수
+let stageCleared = false;
+let effectDeg = 0;
 
 function clear() {
 	if (!stageCleared) {
@@ -567,6 +180,4 @@ function clear() {
 		
 		stageCleared = true;
 	}
-	
-	reset();
 }

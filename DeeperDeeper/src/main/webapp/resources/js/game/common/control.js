@@ -1,78 +1,54 @@
-// 조작에 사용할 변수
-let selectedCircleNumber = 1;
-let rotateFunc = null;
-let rotateDeg = circle1Deg = circle2Deg = circle3Deg = circle4Deg = 0;
+// 키보드 입력 이벤트를 설정하는 함수
+function setKeyupEvent() {
+	$(document).keyup(function(e) {
+		switch (e.keyCode) {
+			case 37: left(); break;
+			case 38: up(); break;
+			case 39: right(); break;
+			case 40: down(); break;
+		}
+	});
+}
 
-$(document).keyup(function(e) {
-	if (timerFunc) {
-		if (e.keyCode == '37') {
-			left();
-		}
-		if (e.keyCode == '38') {
-			up();
-		}
-		if (e.keyCode == '39') {
-			right();
-		}
-		if (e.keyCode == '40') {
-			down();
-		}
-	}
-})
+// up, down 함수에 사용할 변수
+let selectedCircleNumber = 0;
+let arrowImgPath = [
+	"/resources/img/game/common/arrow1.png",
+	"/resources/img/game/common/arrow2.png",
+	"/resources/img/game/common/arrow3.png",
+	"/resources/img/game/common/arrow4.png"
+];
 
 function up() {
-	if (selectedCircleNumber > 1) {
+	if (selectedCircleNumber > 0) {
 		selectedCircleNumber--;
-		switch (selectedCircleNumber) {
-		case 1:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow1.png");
-			break;
-		case 2:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow2.png");
-			break;
-		case 3:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow3.png");
-			break;
-		case 4:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow4.png");
-			break;
-		}
+		$("#arrow").attr("src", contextPath + arrowImgPath[selectedCircleNumber]);
 		new Audio(contextPath + "/resources/audio/updown.wav").play();
 	}
 }
 
 function down() {
-	if (selectedCircleNumber < 4) {
+	if (selectedCircleNumber < 3) {
 		selectedCircleNumber++;
-		switch (selectedCircleNumber) {
-		case 1:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow1.png");
-			break;
-		case 2:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow2.png");
-			break;
-		case 3:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow3.png");
-			break;
-		case 4:
-			$("#arrow").attr("src", contextPath + "/resources/img/game/common/arrow4.png");
-			break;
-		}
+		$("#arrow").attr("src", contextPath + arrowImgPath[selectedCircleNumber]);
 		new Audio(contextPath + "/resources/audio/updown.wav").play();
 	}
 }
 
+// left, right 함수에 사용할 변수
+let rotateFunc = null;
+let rotateDeg = circle1Deg = circle2Deg = circle3Deg = circle4Deg = 0;
+
 function left() {
 	if (!rotateFunc) {
-		var temp = 0;
+		var temp = circles[selectedCircleNumber][0];
+		for (var i = 0; i < 7; i++) {
+			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i + 1];
+		}
+		circles[selectedCircleNumber][7] = temp;
 		
 		switch (selectedCircleNumber) {
-		case 1:
-			temp = A[0];
-			for (var i = 0; i < 7; i++) {
-				A[i] = A[i + 1];
-			}
-			A[7] = temp;
+		case 0:
 			rotateFunc = setInterval(function() {
 				circle1Deg--;
 				$("#A").css({
@@ -89,12 +65,7 @@ function left() {
 				}
 			}, 4);
 			break;
-		case 2:
-			temp = B[0];
-			for (var j = 0; j < 7; j++) {
-				B[j] = B[j + 1];
-			}
-			B[7] = temp;
+		case 1:
 			rotateFunc = setInterval(function() {
 				circle2Deg--;
 				$("#B").css({
@@ -111,12 +82,7 @@ function left() {
 				}
 			}, 3);
 			break;
-		case 3:
-			temp = C[0];
-			for (var k = 0; k < 7; k++) {
-				C[k] = C[k + 1];
-			}
-			C[7] = temp;
+		case 2:
 			rotateFunc = setInterval(function() {
 				circle3Deg--;
 				$("#C").css({
@@ -133,12 +99,7 @@ function left() {
 				}
 			}, 2);
 			break;
-		case 4:
-			temp = D[0];
-			for (var l = 0; l < 7; l++) {
-				D[l] = D[l + 1];
-			}
-			D[7] = temp;
+		case 3:
 			rotateFunc = setInterval(function() {
 				circle4Deg--;
 				$("#D").css({
@@ -171,15 +132,14 @@ function left() {
 
 function right() {
 	if (!rotateFunc) {
-		var temp = 0;
+		var temp = circles[selectedCircleNumber][7];
+		for (var i = 7; i > 0; i--) {
+			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i - 1];
+		}
+		circles[selectedCircleNumber][0] = temp;
 		
 		switch (selectedCircleNumber) {
-		case 1:
-			temp = A[7];
-			for (var i = 7; i > 0; i--) {
-				A[i] = A[i - 1];
-			}
-			A[0] = temp;
+		case 0:
 			rotateFunc = setInterval(function() {
 				circle1Deg++;
 				$("#A").css({
@@ -194,14 +154,9 @@ function right() {
 					rotateFunc = null;
 					rotateDeg = 0;
 				}
-			}, 5);
+			}, 4);
 			break;
-		case 2:
-			temp = B[7];
-			for (var j = 7; j > 0; j--) {
-				B[j] = B[j - 1];
-			}
-			B[0] = temp;
+		case 1:
 			rotateFunc = setInterval(function() {
 				circle2Deg++;
 				$("#B").css({
@@ -216,14 +171,9 @@ function right() {
 					rotateFunc = null;
 					rotateDeg = 0;
 				}
-			}, 5);
+			}, 3);
 			break;
-		case 3:
-			temp = C[7];
-			for (var k = 7; k > 0; k--) {
-				C[k] = C[k - 1];
-			}
-			C[0] = temp;
+		case 2:
 			rotateFunc = setInterval(function() {
 				circle3Deg++;
 				$("#C").css({
@@ -238,14 +188,9 @@ function right() {
 					rotateFunc = null;
 					rotateDeg = 0;
 				}
-			}, 5);
+			}, 2);
 			break;
-		case 4:
-			temp = D[7];
-			for (var l = 7; l > 0; l--) {
-				D[l] = D[l - 1];
-			}
-			D[0] = temp;
+		case 3:
 			rotateFunc = setInterval(function() {
 				circle4Deg++;
 				$("#D").css({
@@ -260,7 +205,7 @@ function right() {
 					rotateFunc = null;
 					rotateDeg = 0;
 				}
-			}, 5);
+			}, 1);
 			break;
 		}
 		new Audio(contextPath + "/resources/audio/right.wav").play();
