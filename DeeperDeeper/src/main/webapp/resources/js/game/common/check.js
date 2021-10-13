@@ -4,6 +4,10 @@ let y = 0;
 let z = 0;
 
 function check() {
+	if (x < 0 || x > 4) {
+		reset();
+		return;
+	}
 	switch (circles[x][y]) {
 	case 1: // ┗┓ 왼쪽
 		switch (z) {
