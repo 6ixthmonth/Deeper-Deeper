@@ -1,21 +1,21 @@
 // 스테이지 클리어 여부 판정에 사용할 변수
-let x = 0;
-let y = 0;
+let circleNum = 0;
+let arrIdx = 0;
 let z = 0;
 
 function check() {
-	if (x < 0 || x > 4) {
+	if (circleNum < 0 || circleNum > 4) {
 		reset();
 		return;
 	}
-	switch (circles[x][y]) {
+	switch (circles[circleNum][arrIdx]) {
 	case 1: // ┗┓ 왼쪽
 		switch (z) {
 		case 0:
-			x++;
-			y++;
-			if (y > 7) {
-				y = 0;
+			circleNum++;
+			arrIdx++;
+			if (arrIdx > 7) {
+				arrIdx = 0;
 			}
 			break;
 		case 1:
@@ -27,10 +27,10 @@ function check() {
 		case 0:
 			return 0;
 		case 1:
-			x--;
-			y--;
-			if (y < 0) {
-				y = 7;
+			circleNum--;
+			arrIdx--;
+			if (arrIdx < 0) {
+				arrIdx = 7;
 			}
 			break;
 		}
@@ -40,10 +40,10 @@ function check() {
 		case 0:
 			return 0;
 		case 1:
-			x--;
-			y++;
-			if (y > 7) {
-				y = 0;
+			circleNum--;
+			arrIdx++;
+			if (arrIdx > 7) {
+				arrIdx = 0;
 			}
 			break;
 		}
@@ -51,10 +51,10 @@ function check() {
 	case 4: // ┏┛ 오른쪽
 		switch (z) {
 		case 0:
-			x++;
-			y--;
-			if (y < 0) {
-				y = 7;
+			circleNum++;
+			arrIdx--;
+			if (arrIdx < 0) {
+				arrIdx = 7;
 			}
 			break;
 		case 1:
@@ -64,10 +64,10 @@ function check() {
 	case 5: // ┗┛ 왼쪽
 		switch (z) {
 		case 0:
-			x--;
-			y++;
-			if (y > 7) {
-				y = 0;
+			circleNum--;
+			arrIdx++;
+			if (arrIdx > 7) {
+				arrIdx = 0;
 			}
 			z = 1;
 			break;
@@ -78,10 +78,10 @@ function check() {
 	case 6: // ┗┛ 오른쪽
 		switch (z) {
 		case 0:
-			x--;
-			y--;
-			if (y < 0) {
-				y = 7;
+			circleNum--;
+			arrIdx--;
+			if (arrIdx < 0) {
+				arrIdx = 7;
 			}
 			z = 1;
 			break;
@@ -94,10 +94,10 @@ function check() {
 		case 0:
 			return 0;
 		case 1:
-			x++;
-			y++;
-			if (y > 7) {
-				y = 0;
+			circleNum++;
+			arrIdx++;
+			if (arrIdx > 7) {
+				arrIdx = 0;
 			}
 			z = 0;
 			break;
@@ -108,10 +108,10 @@ function check() {
 		case 0:
 			return 0;
 		case 1:
-			x++;
-			y--;
-			if (y < 0) {
-				y = 7;
+			circleNum++;
+			arrIdx--;
+			if (arrIdx < 0) {
+				arrIdx = 7;
 			}
 			z = 0;
 			break;
@@ -120,10 +120,10 @@ function check() {
 	case 9: // ┃
 		switch (z) {
 		case 0:
-			x++;
+			circleNum++;
 			break;
 		case 1:
-			x--;
+			circleNum--;
 			break;
 		}
 		break;
@@ -137,8 +137,8 @@ function check() {
 }
 
 function reset() {
-	x = 0;
-	y = 0;
+	circleNum = 0;
+	arrIdx = 0;
 	z = 0;
 }
 
