@@ -118,15 +118,8 @@ function left() {
 			break;
 		}
 		new Audio(contextPath + "/resources/audio/left.wav").play();
-
-		switch (check()) {
-		case 0:
-			reset();
-			break;
-		case 1:
-			clear();
-			break;
-		}
+		
+		if (isCleared(0, 0, 0)) clear();
 	}
 }
 
@@ -209,14 +202,7 @@ function right() {
 			break;
 		}
 		new Audio(contextPath + "/resources/audio/right.wav").play();
-
-		switch (check()) {
-		case 0:
-			reset();
-			break;
-		case 1:
-			clear();
-			break;
-		}
+		
+		if (isCleared(0, 0, 0)) clear();
 	}
 }

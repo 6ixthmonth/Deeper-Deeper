@@ -1,50 +1,36 @@
-// 스테이지 클리어 여부 판정에 사용할 변수
-let circleNum = 0;
-let arrIdx = 0;
-let z = 0;
-
-function check() {
+function isCleared(circleNum, arrIdx, z) {
 	if (circleNum < 0 || circleNum > 4) {
-		reset();
-		return;
+		return false;
 	}
-	switch (circles[circleNum][arrIdx]) {
+	
+	switch (circles[circleNum][(arrIdx % 8 + 8) % 8]) {
 	case 1: // ┗┓ 왼쪽
 		switch (z) {
 		case 0:
 			circleNum++;
 			arrIdx++;
-			if (arrIdx > 7) {
-				arrIdx = 0;
-			}
 			break;
 		case 1:
-			return 0;
+			return false;
 		}
 		break;
 	case 2: // ┗┓ 오른쪽
 		switch (z) {
 		case 0:
-			return 0;
+			return false;
 		case 1:
 			circleNum--;
 			arrIdx--;
-			if (arrIdx < 0) {
-				arrIdx = 7;
-			}
 			break;
 		}
 		break;
 	case 3: // ┏┛ 왼쪽
 		switch (z) {
 		case 0:
-			return 0;
+			return false;
 		case 1:
 			circleNum--;
 			arrIdx++;
-			if (arrIdx > 7) {
-				arrIdx = 0;
-			}
 			break;
 		}
 		break;
@@ -53,12 +39,9 @@ function check() {
 		case 0:
 			circleNum++;
 			arrIdx--;
-			if (arrIdx < 0) {
-				arrIdx = 7;
-			}
 			break;
 		case 1:
-			return 0;
+			return false;
 		}
 		break;
 	case 5: // ┗┛ 왼쪽
@@ -66,13 +49,10 @@ function check() {
 		case 0:
 			circleNum--;
 			arrIdx++;
-			if (arrIdx > 7) {
-				arrIdx = 0;
-			}
 			z = 1;
 			break;
 		case 1:
-			return 0;
+			return false;
 		}
 		break;
 	case 6: // ┗┛ 오른쪽
@@ -80,25 +60,19 @@ function check() {
 		case 0:
 			circleNum--;
 			arrIdx--;
-			if (arrIdx < 0) {
-				arrIdx = 7;
-			}
 			z = 1;
 			break;
 		case 1:
-			return 0;
+			return false;
 		}
 		break;
 	case 7: // ┏┓ 왼쪽
 		switch (z) {
 		case 0:
-			return 0;
+			return false;
 		case 1:
 			circleNum++;
 			arrIdx++;
-			if (arrIdx > 7) {
-				arrIdx = 0;
-			}
 			z = 0;
 			break;
 		}
@@ -106,13 +80,10 @@ function check() {
 	case 8: // ┏┓ 오른쪽
 		switch (z) {
 		case 0:
-			return 0;
+			return false;
 		case 1:
 			circleNum++;
 			arrIdx--;
-			if (arrIdx < 0) {
-				arrIdx = 7;
-			}
 			z = 0;
 			break;
 		}
@@ -128,18 +99,12 @@ function check() {
 		}
 		break;
 	case -1: // 목표 지점
-		return 1;
+		return true;
 	default:
-		return 0;
+		return false;
 	}
 	
-	return check();
-}
-
-function reset() {
-	circleNum = 0;
-	arrIdx = 0;
-	z = 0;
+	return isCleared(circleNum, arrIdx, z);
 }
 
 // 스테이지 클리어 설정에 사용할 변수
