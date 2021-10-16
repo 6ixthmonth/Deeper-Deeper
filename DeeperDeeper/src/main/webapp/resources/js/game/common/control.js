@@ -37,7 +37,9 @@ function down() {
 
 // left, right 함수에 사용할 변수
 let rotateFunc = null;
-let rotateDeg = circle1Deg = circle2Deg = circle3Deg = circle4Deg = 0;
+let rotateDeg = 0;
+let circleIdList = ["#A", "#B", "#C", "#D"];
+let circleDegList = [0, 0, 0, 0];
 
 function left() {
 	if (!rotateFunc) {
@@ -47,76 +49,22 @@ function left() {
 		}
 		circles[selectedCircleNumber][7] = temp;
 		
-		switch (selectedCircleNumber) {
-		case 0:
-			rotateFunc = setInterval(function() {
-				circle1Deg--;
-				$("#A").css({
-					"-webkit-transform" : "rotate(" + circle1Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle1Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle1Deg + "deg)",
-					"-o-transform" : "rotate(" + circle1Deg + "deg)",
-					"transform" : "rotate(" + circle1Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 4);
-			break;
-		case 1:
-			rotateFunc = setInterval(function() {
-				circle2Deg--;
-				$("#B").css({
-					"-webkit-transform" : "rotate(" + circle2Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle2Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle2Deg + "deg)",
-					"-o-transform" : "rotate(" + circle2Deg + "deg)",
-					"transform" : "rotate(" + circle2Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 3);
-			break;
-		case 2:
-			rotateFunc = setInterval(function() {
-				circle3Deg--;
-				$("#C").css({
-					"-webkit-transform" : "rotate(" + circle3Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle3Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle3Deg + "deg)",
-					"-o-transform" : "rotate(" + circle3Deg + "deg)",
-					"transform" : "rotate(" + circle3Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 2);
-			break;
-		case 3:
-			rotateFunc = setInterval(function() {
-				circle4Deg--;
-				$("#D").css({
-					"-webkit-transform" : "rotate(" + circle4Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle4Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle4Deg + "deg)",
-					"-o-transform" : "rotate(" + circle4Deg + "deg)",
-					"transform" : "rotate(" + circle4Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 1);
-			break;
-		}
+		rotateFunc = setInterval(function() {
+			circleDegList[selectedCircleNumber]--;
+			$(circleIdList[selectedCircleNumber]).css({
+				"-webkit-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"-moz-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"-ms-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"-o-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)"
+			});
+			if (++rotateDeg >= 45) {
+				clearInterval(rotateFunc);
+				rotateFunc = null;
+				rotateDeg = 0;
+			}
+		}, 4 - selectedCircleNumber);
+		
 		new Audio(contextPath + "/resources/audio/left.wav").play();
 		
 		if (isCleared(0, 0, 0)) clear();
@@ -131,76 +79,22 @@ function right() {
 		}
 		circles[selectedCircleNumber][0] = temp;
 		
-		switch (selectedCircleNumber) {
-		case 0:
-			rotateFunc = setInterval(function() {
-				circle1Deg++;
-				$("#A").css({
-					"-webkit-transform" : "rotate(" + circle1Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle1Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle1Deg + "deg)",
-					"-o-transform" : "rotate(" + circle1Deg + "deg)",
-					"transform" : "rotate(" + circle1Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 4);
-			break;
-		case 1:
-			rotateFunc = setInterval(function() {
-				circle2Deg++;
-				$("#B").css({
-					"-webkit-transform" : "rotate(" + circle2Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle2Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle2Deg + "deg)",
-					"-o-transform" : "rotate(" + circle2Deg + "deg)",
-					"transform" : "rotate(" + circle2Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 3);
-			break;
-		case 2:
-			rotateFunc = setInterval(function() {
-				circle3Deg++;
-				$("#C").css({
-					"-webkit-transform" : "rotate(" + circle3Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle3Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle3Deg + "deg)",
-					"-o-transform" : "rotate(" + circle3Deg + "deg)",
-					"transform" : "rotate(" + circle3Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 2);
-			break;
-		case 3:
-			rotateFunc = setInterval(function() {
-				circle4Deg++;
-				$("#D").css({
-					"-webkit-transform" : "rotate(" + circle4Deg + "deg)",
-					"-moz-transform" : "rotate(" + circle4Deg + "deg)",
-					"-ms-transform" : "rotate(" + circle4Deg + "deg)",
-					"-o-transform" : "rotate(" + circle4Deg + "deg)",
-					"transform" : "rotate(" + circle4Deg + "deg)"
-				});
-				if (++rotateDeg >= 45) {
-					clearInterval(rotateFunc);
-					rotateFunc = null;
-					rotateDeg = 0;
-				}
-			}, 1);
-			break;
-		}
+		rotateFunc = setInterval(function() {
+			circleDegList[selectedCircleNumber]++;
+			$(circleIdList[selectedCircleNumber]).css({
+				"-webkit-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"-moz-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"-ms-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"-o-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
+				"transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)"
+			});
+			if (++rotateDeg >= 45) {
+				clearInterval(rotateFunc);
+				rotateFunc = null;
+				rotateDeg = 0;
+			}
+		}, 4 - selectedCircleNumber);
+		
 		new Audio(contextPath + "/resources/audio/right.wav").play();
 		
 		if (isCleared(0, 0, 0)) clear();

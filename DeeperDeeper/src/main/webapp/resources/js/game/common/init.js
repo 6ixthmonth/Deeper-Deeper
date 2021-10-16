@@ -6,7 +6,7 @@ $(function() {
 	contextPath = $("#contextPath").val();
 	lang = $("#lang").val();
 	
-	$("#start").on("click", startFunc);
+	$("input:button").click(startFunc);
 });
 
 // START 버튼 클릭 시 실행할 함수
@@ -30,7 +30,7 @@ function startFunc() {
 // 화면에서 스테이지 타이틀과 START 버튼을 제거하고 본문 영역 위치를 설정하는 함수
 function removeTitleAndBtn() {
 	$("h1").remove();
-	$("#start").remove();
+	$("input:button").remove();
 	$("#title").css("top", "20px");
 }
 
@@ -156,14 +156,14 @@ function setReturnBtn() {
 // 타이머에서 사용할 변수
 let timerFunc = null;
 
-let TS = "";
-let HS = "";
-let MS = "";
-let S2 = "";
+let timerStr = "";
+let hourStr = "";
+let minStr = "";
+let secStr = "";
 
-let HH = 0;
-let MM = 0;
-let SS = 0;
+let hourVal = 0;
+let minVal = 0;
+let secVal = 0;
 
 // 타이머 값을 초기화하고 타이머를 시작하는 함수
 function setTimer() {
@@ -171,46 +171,43 @@ function setTimer() {
 	initTimerVal();
 	
 	timerFunc = setInterval(function() {
-		if (HH < 10) {
-			HS = "0" + HH;
+		if (hourVal < 10) {
+			hourStr = "0" + hourVal;
 		} else {
-			HS = HH + "";
+			hourStr = hourVal + "";
 		}
-		if (MM < 10) {
-			MS = "0" + MM;
+		if (minVal < 10) {
+			minStr = "0" + minVal;
 		} else {
-			MS = MM + "";
+			minStr = minVal + "";
 		}
-		if (SS < 10) {
-			S2 = "0" + SS;
+		if (secVal < 10) {
+			secStr = "0" + secVal;
 		} else {
-			S2 = SS + "";
+			secStr = secVal + "";
 		}
+		timerStr = hourStr + ":" + minStr + ":" + secStr;
+		$("#timer").html(timerStr);
 		
-		TS = HS + ":" + MS + ":" + S2;
-		$("#timer").html(TS);
-		
-		SS++;
-		if (SS > 59) {
-			MM++;
-			SS = 0;
+		secVal++;
+		if (secVal > 59) {
+			minVal++;
+			secVal = 0;
 		}
-		if (MM > 60) {
-			HH++;
-			MM = 0;
+		if (minVal > 60) {
+			hourVal++;
+			minVal = 0;
 		}
 	}, 1000);
 }
 
 // 타이머 값을 초기화하는 함수
 function initTimerVal() {
-	HS = $("#HS").val();
-	MS = $("#MS").val();
-	S2 = $("#SS").val();
+	hourStr = $("#hourStr").val();
+	minStr = $("#minStr").val();
+	secStr = $("#secStr").val();
 	
-	if (!HS && !MS && !S2) {
-		HH = HS * 1;
-		MM = MS * 1;
-		SS = S2 * 1;
-	}
+	hourVal = hourStr * 1;
+	minVal = minStr * 1;
+	secVal = secStr * 1;
 }

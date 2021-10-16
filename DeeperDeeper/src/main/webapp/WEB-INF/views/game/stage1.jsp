@@ -17,12 +17,16 @@
 
 <body>
 	<input id="contextPath" type="hidden" value="${pageContext.servletContext.contextPath}">
-	<input id="lang" type="hidden" name="lang" value="${lang}">
+	<input id="lang" type="hidden" value="${lang}">
+	
+	<input id="hourStr" type="hidden" value="${hourStr}">
+	<input id="minStr" type="hidden" value="${minStr}">
+	<input id="secStr" type="hidden" value="${secStr}">
 	
 	<div id="title" class="outer">
 		<div class="inner">
 			<h1>STAGE 1</h1>
-			<input id="start" type="button" value="START">
+			<input type="button" value="START">
 		</div>
 	</div>
 </body>

@@ -10,11 +10,6 @@ let circleFourImgPath = "/resources/img/game/stage2/stage2_circle4.png";
 let finishCircleImgPath = "/resources/img/game/common/goal_circle1.png";
 
 // 원 설정
-// let A = [ 4, 7, 8, 7, 8, 7, 8, 3 ];
-// let B = [ 5, 6, 5, 6, 5, 6, 3, 4 ];
-// let C = [ 8, 7, 8, 7, 8, 3, 4, 7 ];
-// let D = [ 5, 6, 5, 6, 3, 4, 5, 6 ];
-// let E = [ 1, 0, 0, 0, 0, 0, 0, 0 ];
 let circles = [
 	[ 4, 7, 8, 7, 8, 7, 8, 3 ],
 	[ 5, 6, 5, 6, 5, 6, 3, 4 ],

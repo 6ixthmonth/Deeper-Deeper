@@ -37,10 +37,14 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "/stage1", method = RequestMethod.POST)
-	public String stage1(HttpSession session, String playerName) {
+	public String stage1(HttpSession session, Model model, String playerName) {
 		logger.info("stage1(GET) 메소드 실행");
 		
 		session.setAttribute("playerName", playerName);
+		
+		model.addAttribute("hourStr", "00");
+		model.addAttribute("minStr", "00");
+		model.addAttribute("secStr", "00");
 		
 		return "game/stage1";
 	}
@@ -61,13 +65,13 @@ public class GameController {
 		
 		String clearTime = (String) session.getAttribute("clearTime");
 		StringTokenizer tokens = new StringTokenizer(clearTime, ":");
-		String HH = tokens.nextToken();
-		String MM = tokens.nextToken();
-		String SS = tokens.nextToken();
+		String hourStr = tokens.nextToken();
+		String minStr = tokens.nextToken();
+		String secStr = tokens.nextToken();
 		
-		model.addAttribute("HS", HH);
-		model.addAttribute("MS", MM);
-		model.addAttribute("SS", SS);
+		model.addAttribute("hourStr", hourStr);
+		model.addAttribute("minStr", minStr);
+		model.addAttribute("secStr", secStr);
 		
 		return "game/stage2";
 	}
@@ -102,13 +106,13 @@ public class GameController {
 		
 		String clearTime = (String) session.getAttribute("clearTime");
 		StringTokenizer tokens = new StringTokenizer(clearTime, ":");
-		String HH = tokens.nextToken();
-		String MM = tokens.nextToken();
-		String SS = tokens.nextToken();
+		String hourStr = tokens.nextToken();
+		String minStr = tokens.nextToken();
+		String secStr = tokens.nextToken();
 		
-		model.addAttribute("HS", HH);
-		model.addAttribute("MS", MM);
-		model.addAttribute("SS", SS);
+		model.addAttribute("hourStr", hourStr);
+		model.addAttribute("minStr", minStr);
+		model.addAttribute("secStr", secStr);
 		
 		return "game/stage3";
 	}

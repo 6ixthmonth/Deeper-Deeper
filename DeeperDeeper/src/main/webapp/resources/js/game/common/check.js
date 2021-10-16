@@ -1,11 +1,11 @@
-function isCleared(circleNum, arrIdx, z) {
+function isCleared(circleNum, arrIdx, direction) {
 	if (circleNum < 0 || circleNum > 4) {
 		return false;
 	}
 	
 	switch (circles[circleNum][(arrIdx % 8 + 8) % 8]) {
 	case 1: // ┗┓ 왼쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			circleNum++;
 			arrIdx++;
@@ -15,7 +15,7 @@ function isCleared(circleNum, arrIdx, z) {
 		}
 		break;
 	case 2: // ┗┓ 오른쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			return false;
 		case 1:
@@ -25,7 +25,7 @@ function isCleared(circleNum, arrIdx, z) {
 		}
 		break;
 	case 3: // ┏┛ 왼쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			return false;
 		case 1:
@@ -35,7 +35,7 @@ function isCleared(circleNum, arrIdx, z) {
 		}
 		break;
 	case 4: // ┏┛ 오른쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			circleNum++;
 			arrIdx--;
@@ -45,51 +45,51 @@ function isCleared(circleNum, arrIdx, z) {
 		}
 		break;
 	case 5: // ┗┛ 왼쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			circleNum--;
 			arrIdx++;
-			z = 1;
+			direction = 1;
 			break;
 		case 1:
 			return false;
 		}
 		break;
 	case 6: // ┗┛ 오른쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			circleNum--;
 			arrIdx--;
-			z = 1;
+			direction = 1;
 			break;
 		case 1:
 			return false;
 		}
 		break;
 	case 7: // ┏┓ 왼쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			return false;
 		case 1:
 			circleNum++;
 			arrIdx++;
-			z = 0;
+			direction = 0;
 			break;
 		}
 		break;
 	case 8: // ┏┓ 오른쪽
-		switch (z) {
+		switch (direction) {
 		case 0:
 			return false;
 		case 1:
 			circleNum++;
 			arrIdx--;
-			z = 0;
+			direction = 0;
 			break;
 		}
 		break;
 	case 9: // ┃
-		switch (z) {
+		switch (direction) {
 		case 0:
 			circleNum++;
 			break;
@@ -104,7 +104,7 @@ function isCleared(circleNum, arrIdx, z) {
 		return false;
 	}
 	
-	return isCleared(circleNum, arrIdx, z);
+	return isCleared(circleNum, arrIdx, direction);
 }
 
 // 스테이지 클리어 설정에 사용할 변수
