@@ -131,7 +131,7 @@ function clear() {
 		}, 100);
 		
 		$("#clear").append("<form id='clearForm' action='stage" + stageNum + "_clear' method='POST'></form>");
-		$("#clearForm").append("<input type='hidden' name='clearTime' value='" + TS + "'>");
+		$("#clearForm").append("<input type='hidden' name='clearTime' value='" + timerStr + "'>");
 		if (lang == "kr") {
 			$("#clearForm").append("<input type='submit' value='다음으로'>");
 			/*alert("스테이지 클리어!\n클리어 시간 : " + TS);*/
