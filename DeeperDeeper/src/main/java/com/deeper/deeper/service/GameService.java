@@ -14,7 +14,7 @@ public class GameService {
 	@Autowired
 	GameRepository repository;
 
-	public boolean record(int stageNum, String playerName, String clearTime) {
+	public boolean record(int stageNum, String playerName, int clearTime) {
 		int result = repository.record(new ClearDataVO(playerName, stageNum, clearTime));
 		if (result > 0) return true;
 		else return false;

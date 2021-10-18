@@ -28,7 +28,7 @@ public class HomeController {
 		
 		session.removeAttribute("stageNum");
 		session.removeAttribute("playerName");
-		session.removeAttribute("clearTime");
+		session.removeAttribute("playTime");
 
 		return "menu/main";
 	}

@@ -44,19 +44,19 @@
 	<div id="timer" class="outer">
 		<div class="inner">
 			<c:if test="${lang eq 'kr'}">
-				<h1>클리어 시간 : ${clearTime}</h1>
+				<h1>클리어 시간 : ${playTime}</h1>
 			</c:if>
 			<c:if test="${lang eq 'jp'}">
-				<h1>クリア時間 : ${clearTime}</h1>
+				<h1>クリア時間 : ${playTime}</h1>
 			</c:if>
 			<c:if test="${lang eq 'en'}">
-				<h1>Clear Time : ${clearTime}</h1>
+				<h1>Clear Time : ${playTime}</h1>
 			</c:if>
 		</div>
 	</div>
 	
 	<div id="back">
-		<form action="exit">
+		<form action="<c:url value='/main' />">
 			<c:if test="${lang eq 'kr'}">
 				<input type="submit" value="처음 화면으로">
 			</c:if>

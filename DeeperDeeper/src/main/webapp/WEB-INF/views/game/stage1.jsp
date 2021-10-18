@@ -19,9 +19,7 @@
 	<input id="contextPath" type="hidden" value="${pageContext.servletContext.contextPath}">
 	<input id="lang" type="hidden" value="${lang}">
 	
-	<input id="hourStr" type="hidden" value="${hourStr}">
-	<input id="minStr" type="hidden" value="${minStr}">
-	<input id="secStr" type="hidden" value="${secStr}">
+	<input id="playTime" type="hidden" value="${playTime}">
 	
 	<div id="title" class="outer">
 		<div class="inner">

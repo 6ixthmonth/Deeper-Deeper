@@ -54,7 +54,7 @@ function setGameComponent() {
 
 // 타이머를 표시할 영역을 추가하는 함수
 function setTimerArea() {
-	$(".inner").append("<div></div>");
+	$("title>.inner").append("<div></div>");
 	$("div:last").attr("id", "timer");
 }
 
@@ -156,14 +156,8 @@ function setReturnBtn() {
 // 타이머에서 사용할 변수
 let timerFunc = null;
 
-let timerStr = "";
-let hourStr = "";
-let minStr = "";
-let secStr = "";
-
-let hourVal = 0;
-let minVal = 0;
-let secVal = 0;
+let playTime = hourVal = minVal = secVal = 0;
+let timerStr = hourStr = minStr = secStr = "";
 
 // 타이머 값을 초기화하고 타이머를 시작하는 함수
 function setTimer() {
@@ -171,17 +165,17 @@ function setTimer() {
 	initTimerVal();
 	
 	timerFunc = setInterval(function() {
-		if (hourVal < 10) {
+		if (calcHour(playTime) < 10) {
 			hourStr = "0" + hourVal;
 		} else {
 			hourStr = hourVal + "";
 		}
-		if (minVal < 10) {
+		if (calcMin(playTime) < 10) {
 			minStr = "0" + minVal;
 		} else {
 			minStr = minVal + "";
 		}
-		if (secVal < 10) {
+		if (calcSec(playTime) < 10) {
 			secStr = "0" + secVal;
 		} else {
 			secStr = secVal + "";
@@ -189,25 +183,27 @@ function setTimer() {
 		timerStr = hourStr + ":" + minStr + ":" + secStr;
 		$("#timer").html(timerStr);
 		
-		secVal++;
-		if (secVal > 59) {
-			minVal++;
-			secVal = 0;
-		}
-		if (minVal > 60) {
-			hourVal++;
-			minVal = 0;
-		}
+		playTime++;
 	}, 1000);
 }
 
 // 타이머 값을 초기화하는 함수
 function initTimerVal() {
-	hourStr = $("#hourStr").val();
-	minStr = $("#minStr").val();
-	secStr = $("#secStr").val();
+	playTime = parseInt($("#playTime").val());
 	
-	hourVal = hourStr * 1;
-	minVal = minStr * 1;
-	secVal = secStr * 1;
+	calcHour(playTime);
+	calcMin(playTime);
+	calcSec(playTime);
+}
+
+function calcHour(playTime) {
+	hourVal = parseInt(playTime / 3600);
+}
+
+function calcMin(playTime) {
+	minVal = parseInt(playTime % 3600 / 60);
+}
+
+function calcSec(playTime) {
+	secVal = playTime % 60;
 }

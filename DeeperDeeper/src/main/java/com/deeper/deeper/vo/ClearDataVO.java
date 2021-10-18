@@ -4,10 +4,10 @@ public class ClearDataVO {
 
 	private String playerName;
 	private int stageNum;
-	private String clearTime;
+	private int clearTime;
 	private String clearWhen;
 
-	public ClearDataVO(String playerName, int stageNum, String clearTime) {
+	public ClearDataVO(String playerName, int stageNum, int clearTime) {
 		this.stageNum = stageNum;
 		this.playerName = playerName;
 		this.clearTime = clearTime;
@@ -29,11 +29,11 @@ public class ClearDataVO {
 		this.stageNum = stageNum;
 	}
 
-	public String getClearTime() {
+	public int getClearTime() {
 		return clearTime;
 	}
 
-	public void setClearTime(String clearTime) {
+	public void setClearTime(int clearTime) {
 		this.clearTime = clearTime;
 	}
 
