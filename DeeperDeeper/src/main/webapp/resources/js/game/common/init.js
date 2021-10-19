@@ -12,9 +12,9 @@ $(function() {
 // START 버튼 클릭 시 실행할 함수
 function startFunc() {
 	// 화면에서 기존 요소들을 제거
-	removeTitleAndBtn();
+	removeStartBtn();
 	
-	// 화면에 게임 요소를 추가
+	// 화면에 게임 요소들을 추가
 	setGameComponent();
 	
 	// 키보드 입력 이벤트를 설정(control.js 참고)
@@ -23,12 +23,15 @@ function startFunc() {
 	// 화면에 돌아가기 버튼을 추가
 	setReturnBtn();
 	
+	// 다음 스테이지 이동 버튼을 추가
+	setNextBtn();
+	
 	// 타이머를 설정
 	setTimer();
 }
 
 // 화면에서 스테이지 타이틀과 START 버튼을 제거하고 본문 영역 위치를 설정하는 함수
-function removeTitleAndBtn() {
+function removeStartBtn() {
 	$("h1").remove();
 	$("input:button").remove();
 	$("#title").css("top", "20px");
@@ -47,15 +50,21 @@ function setGameComponent() {
 	
 	// 조작 버튼 추가
 	setControlBtn();
-	
-	// 스테이지 클리어 효과를 표시할 영역 추가
-	setClearArea();
 }
 
 // 타이머를 표시할 영역을 추가하는 함수
 function setTimerArea() {
 	$("title>.inner").append("<div></div>");
 	$("div:last").attr("id", "timer");
+	
+	$("#timer").append("<span></span>");
+	$("span:last").attr("id", "hour");
+	$("#timer").append("<span>:</span>");
+	$("#timer").append("<span></span>");
+	$("span:last").attr("id", "min");
+	$("#timer").append("<span>:</span>");
+	$("#timer").append("<span></span>");
+	$("span:last").attr("id", "sec");
 }
 
 // 원반 이미지를 표시할 영역을 추가하는 함수
@@ -125,39 +134,41 @@ function setControlBtn() {
 	$("button:last").attr("onclick", "right()");
 }
 
-// 스테이지 클리어 효과를 표시할 영역을 추가하는 함수
-function setClearArea() {
-	$("body").append("<div></div>");
-	$("div:last").attr("id", "clear");
-}
-
 // 메인 화면으로 이동하는 폼과 버튼을 추가하는 함수
 function setReturnBtn() {
 	$("body").append("<div></div>");
 	$("div:last").attr("id", "back");
 	$("#back").append("<form></form>");
-	$("form").attr("action", "main");
+	let action;
+	if (stageNum > 1) action = contextPath + "/exit";
+	else action = contextPath + "/main";
+	$("form").attr("action", action);
 	$("form").append("<input>");
 	$("input:last").attr("type", "submit");
 	
 	let btnMsg;
-	if (lang == "kr") {
-		btnMsg = "처음 화면으로";
-	}
-	if (lang == "jp") {
-		btnMsg = "トップへ戻る";
-	}
-	if (lang == "en") {
-		btnMsg = "Top Page";
-	}
+	if (lang == "kr") btnMsg = "처음 화면으로";
+	else if (lang == "jp") btnMsg = "トップへ戻る";
+	else if (lang == "en") btnMsg = "Top Page";
 	$("input:last").attr("value", btnMsg);
+}
+
+// 다음 스테이지로 이동하는 폼과 버튼을 추가하는 함수
+function setNextBtn() {
+	$("body").append("<div id='next'></div>");
+	$("#next").append("<form id='nextForm' action='" + contextPath + "/stage" + stageNum + "_clear' method='POST'></form>");
+	$("#nextForm").append("<input type='hidden' id='clearTime' name='clearTime'>");
+	$("#nextForm").append("<input type='submit'>");
+	let btnVal;
+	if (lang == "kr") btnVal = "다음으로";
+	else if (lang == "jp") btnVal = "次へ";
+	else if (lang == "en") btnVal = "Next";
+	$("#nextForm>input:submit").val(btnVal);
 }
 
 // 타이머에서 사용할 변수
 let timerFunc = null;
-
-let playTime = hourVal = minVal = secVal = 0;
-let timerStr = hourStr = minStr = secStr = "";
+let hourVal = minVal = secVal = 0;
 
 // 타이머 값을 초기화하고 타이머를 시작하는 함수
 function setTimer() {
@@ -165,45 +176,28 @@ function setTimer() {
 	initTimerVal();
 	
 	timerFunc = setInterval(function() {
-		if (calcHour(playTime) < 10) {
-			hourStr = "0" + hourVal;
-		} else {
-			hourStr = hourVal + "";
+		if (++secVal > 59) {
+			secVal = 0;
+			if (++minVal > 59) {
+				minVal = 0;
+				++hourVal;
+				$("#hour").html(hourVal < 10 ? "0" + hourVal : hourVal);
+			}
+			$("#min").html(minVal < 10 ? "0" + minVal : minVal);
 		}
-		if (calcMin(playTime) < 10) {
-			minStr = "0" + minVal;
-		} else {
-			minStr = minVal + "";
-		}
-		if (calcSec(playTime) < 10) {
-			secStr = "0" + secVal;
-		} else {
-			secStr = secVal + "";
-		}
-		timerStr = hourStr + ":" + minStr + ":" + secStr;
-		$("#timer").html(timerStr);
-		
-		playTime++;
+		$("#sec").html(secVal < 10 ? "0" + secVal : secVal);
 	}, 1000);
 }
 
 // 타이머 값을 초기화하는 함수
 function initTimerVal() {
-	playTime = parseInt($("#playTime").val());
+	let playTime = parseInt($("#playTime").val());
 	
-	calcHour(playTime);
-	calcMin(playTime);
-	calcSec(playTime);
-}
-
-function calcHour(playTime) {
 	hourVal = parseInt(playTime / 3600);
-}
-
-function calcMin(playTime) {
 	minVal = parseInt(playTime % 3600 / 60);
-}
-
-function calcSec(playTime) {
 	secVal = playTime % 60;
+	
+	$("#hour").html(hourVal < 10 ? "0" + hourVal : hourVal);
+	$("#min").html(minVal < 10 ? "0" + minVal : minVal);
+	$("#sec").html(secVal < 10 ? "0" + secVal : secVal);
 }

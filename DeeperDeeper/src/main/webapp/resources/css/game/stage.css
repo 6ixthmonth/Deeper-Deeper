@@ -55,14 +55,16 @@ button {
 	display: inline-block;
 }
 
-#clear {
-	position: fixed;
-	top: 95%;
-	left: 93%;
-}
-
 #back {
 	position: fixed;
 	top: 95%;
 	left: 2%;
+}
+
+#next {
+	position: fixed;
+	top: 95%;
+	left: 93%;
+	
+	display: none;
 }

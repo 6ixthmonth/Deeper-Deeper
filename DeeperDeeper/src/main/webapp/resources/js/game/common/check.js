@@ -130,20 +130,11 @@ function clear() {
 			});
 		}, 100);
 		
-		$("#clear").append("<form id='clearForm' action='stage" + stageNum + "_clear' method='POST'></form>");
-		$("#clearForm").append("<input type='hidden' name='playTime' value='" + playTime + "'>");
-		if (lang == "kr") {
-			$("#clearForm").append("<input type='submit' value='다음으로'>");
-			/*alert("스테이지 클리어!\n클리어 시간 : " + TS);*/
-		}
-		if (lang == "jp") {
-			$("#clearForm").append("<input type='submit' value='次へ'>");
-			/*alert("ステージクリア!\nクリア時間 : " + TS);*/
-		}
-		if (lang == "en") {
-			$("#clearForm").append("<input type='submit' value='Next'>");
-			/*alert("Stage Clear!\nClear Time : " + TS);*/
-		}
+		let playTime = hourVal * 3600 + minVal * 60 + secVal;
+		console.log("playTime: " + playTime);
+		
+		$("#next").show();
+		$("#clearTime").val(playTime);
 		
 		new Audio(contextPath + "/resources/audio/clear.wav").play();
 		
