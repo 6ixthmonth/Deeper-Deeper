@@ -38,7 +38,7 @@ function down() {
 // left, right 함수에 사용할 변수
 let rotateFunc = null;
 let rotateDeg = 0;
-let circleIdList = ["#A", "#B", "#C", "#D"];
+let circleIdList = ["A", "B", "C", "D"];
 let circleDegList = [0, 0, 0, 0];
 
 function left() {
@@ -51,7 +51,7 @@ function left() {
 		
 		rotateFunc = setInterval(function() {
 			circleDegList[selectedCircleNumber]--;
-			$(circleIdList[selectedCircleNumber]).css({
+			$("#" + circleIdList[selectedCircleNumber]).css({
 				"-webkit-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
 				"-moz-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
 				"-ms-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
@@ -81,7 +81,7 @@ function right() {
 		
 		rotateFunc = setInterval(function() {
 			circleDegList[selectedCircleNumber]++;
-			$(circleIdList[selectedCircleNumber]).css({
+			$("#" + circleIdList[selectedCircleNumber]).css({
 				"-webkit-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
 				"-moz-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
 				"-ms-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",

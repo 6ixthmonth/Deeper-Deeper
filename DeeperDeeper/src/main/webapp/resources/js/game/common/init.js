@@ -82,32 +82,20 @@ function setCircleImg() {
 	$("div:last").append("<img>")
 	$("img:last").attr("id", "startCircle");
 	$("#startCircle").attr("class", "circle");
-	$("#startCircle").attr("src", contextPath + startCircleImgPath);
-	// 첫 번째 원 이미지 추가
-	$("div:last").append("<img>")
-	$("img:last").attr("id", "A");
-	$("#A").attr("class", "circle");
-	$("#A").attr("src", contextPath + circleOneImgPath);
-	// 두 번째 원 이미지 추가
-	$("div:last").append("<img>");
-	$("img:last").attr("id", "B");
-	$("#B").attr("class", "circle");
-	$("#B").attr("src", contextPath + circleTwoImgPath);
-	// 세 번째 원 이미지 추가
-	$("div:last").append("<img>");
-	$("img:last").attr("id", "C");
-	$("#C").attr("class", "circle");
-	$("#C").attr("src", contextPath + circleThreeImgPath);
-	// 네 번째 원 이미지 추가
-	$("div:last").append("<img>");
-	$("img:last").attr("id", "D");
-	$("#D").attr("class", "circle");
-	$("#D").attr("src", contextPath + circleFourImgPath);
+	$("#startCircle").attr("src", contextPath + imgPath[4]);
+	
+	for (let i = 0; i < circleIdList.length; i++) {
+		$("div:last").append("<img>")
+		$("img:last").attr("id", circleIdList[i]);
+		$("#" + circleIdList[i]).attr("class", "circle");
+		$("#" + circleIdList[i]).attr("src", contextPath + imgPath[i]);
+	}
+	
 	// 목표 지점 원 이미지 추가
 	$("div:last").append("<img>");
 	$("img:last").attr("id", "finishCircle");
 	$("#finishCircle").attr("class", "circle");
-	$("#finishCircle").attr("src", contextPath + finishCircleImgPath);
+	$("#finishCircle").attr("src", contextPath + imgPath[5]);
 	// 커서 이미지 추가
 	$("div:last").append("<img>");
 	$("img:last").attr("id", "arrow");

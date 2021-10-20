@@ -2,12 +2,14 @@
 const stageNum = 1;
 
 // 원반 이미지 경로
-let startCircleImgPath = "/resources/img/game/common/stage_bg1.png";
-let circleOneImgPath = "/resources/img/game/demo/demo_circle1.png";
-let circleTwoImgPath = "/resources/img/game/demo/demo_circle2.png";
-let circleThreeImgPath = "/resources/img/game/demo/demo_circle3.png";
-let circleFourImgPath = "/resources/img/game/demo/demo_circle4.png";
-let finishCircleImgPath = "/resources/img/game/common/goal_circle1.png";
+let imgPath = [
+	"/resources/img/game/demo/demo_circle1.png",
+	"/resources/img/game/demo/demo_circle2.png",
+	"/resources/img/game/demo/demo_circle3.png",
+	"/resources/img/game/demo/demo_circle4.png",
+	"/resources/img/game/common/stage_bg1.png",
+	"/resources/img/game/common/goal_circle1.png"
+];
 
 // 원 설정
 let circles = [
