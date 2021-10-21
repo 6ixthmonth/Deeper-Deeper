@@ -49,7 +49,6 @@ public class GameController {
 		logger.info("stage1Clear(GET) 메소드 실행");
 		
 		session.setAttribute("stageNum", 1);
-		logger.info("clearTime: {}", clearTime);
 		session.setAttribute("playTime", clearTime);
 		
 		return "redirect:/stage2";
@@ -60,7 +59,6 @@ public class GameController {
 		logger.info("stage2(GET) 메소드 실행");
 		
 		int playTime = (int) session.getAttribute("playTime");
-		logger.info("playTime: {}", playTime);
 		model.addAttribute("playTime", playTime);
 		
 		return "game/stage2";
@@ -80,7 +78,6 @@ public class GameController {
 		logger.info("stage2Clear(POST) 메소드 실행");
 		
 		session.setAttribute("stageNum", 2);
-		logger.info("clearTime: {}", clearTime);
 		session.setAttribute("playTime", clearTime);
 		
 		return "redirect:/stage3";
@@ -91,7 +88,6 @@ public class GameController {
 		logger.info("stage3(GET) 메소드 실행");
 		
 		int playTime = (int) session.getAttribute("playTime");
-		logger.info("playTime: {}", playTime);
 		model.addAttribute("playTime", playTime);
 		
 		return "game/stage3";
@@ -102,7 +98,6 @@ public class GameController {
 		logger.info("stage3Clear(POST) 메소드 실행");
 		
 		session.setAttribute("stageNum", 3);
-		logger.info("clearTime: {}", clearTime);
 		session.setAttribute("playTime", clearTime);
 		
 		return "redirect:/all_clear";
@@ -130,7 +125,6 @@ public class GameController {
 		int stageNum = (int) session.getAttribute("stageNum");
 		String playerName = (String) session.getAttribute("playerName");
 		int clearTime = (int) session.getAttribute("playTime");
-		logger.info("clearTime: {}", clearTime);
 		
 		boolean result = service.record(stageNum, playerName, clearTime);
 		

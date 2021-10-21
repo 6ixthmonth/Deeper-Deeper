@@ -131,7 +131,6 @@ function clear() {
 		}, 100);
 		
 		let playTime = hourVal * 3600 + minVal * 60 + secVal;
-		console.log("playTime: " + playTime);
 		
 		$("#next").show();
 		$("#clearTime").val(playTime);
