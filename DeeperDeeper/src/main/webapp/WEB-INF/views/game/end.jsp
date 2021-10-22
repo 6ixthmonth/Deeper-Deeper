@@ -11,6 +11,8 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/game/end.js' />"></script>
 </head>
 <body>
+	<input id="playTime" type="hidden" value="${playTime}">
+	
 	<img id="bg" src="<c:url value='/resources/img/menu/common/bg.png' />">
 	
 	<div id="title" class="outer">
@@ -44,14 +46,19 @@
 	<div id="timer" class="outer">
 		<div class="inner">
 			<c:if test="${lang eq 'kr'}">
-				<h1>클리어 시간 : ${playTime}</h1>
+				<h1>클리어 시간</h1>
 			</c:if>
 			<c:if test="${lang eq 'jp'}">
-				<h1>クリア時間 : ${playTime}</h1>
+				<h1>クリア時間</h1>
 			</c:if>
 			<c:if test="${lang eq 'en'}">
-				<h1>Clear Time : ${playTime}</h1>
+				<h1>Clear Time</h1>
 			</c:if>
+			<span id="hour"></span>
+			<span>:</span>
+			<span id="min"></span>
+			<span>:</span>
+			<span id="sec"></span>
 		</div>
 	</div>
 	

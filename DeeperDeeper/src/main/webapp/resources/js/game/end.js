@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	initTimerVal();
+	
 	var a = b = c = d = e = 0;
 	
 	setInterval(function() {
@@ -71,3 +73,15 @@ $(document).ready(function() {
 		});
 	}, 5);
 });
+
+function initTimerVal() {
+	let playTime = parseInt($("#playTime").val());
+	
+	hourVal = parseInt(playTime / 3600);
+	minVal = parseInt(playTime % 3600 / 60);
+	secVal = playTime % 60;
+	
+	$("#hour").html(hourVal < 10 ? "0" + hourVal : hourVal);
+	$("#min").html(minVal < 10 ? "0" + minVal : minVal);
+	$("#sec").html(secVal < 10 ? "0" + secVal : secVal);
+}

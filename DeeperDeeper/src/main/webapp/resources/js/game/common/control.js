@@ -43,12 +43,6 @@ let circleDegList = [0, 0, 0, 0];
 
 function left() {
 	if (!rotateFunc) {
-		var temp = circles[selectedCircleNumber][0];
-		for (var i = 0; i < 7; i++) {
-			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i + 1];
-		}
-		circles[selectedCircleNumber][7] = temp;
-		
 		rotateFunc = setInterval(function() {
 			circleDegList[selectedCircleNumber]--;
 			$("#" + circleIdList[selectedCircleNumber]).css({
@@ -64,6 +58,28 @@ function left() {
 				rotateDeg = 0;
 			}
 		}, 4 - selectedCircleNumber);
+		/* rotateFunc = true;
+		circleDegList[selectedCircleNumber] -= 45;
+		$("#" + circleIdList[selectedCircleNumber]).animate(
+			{ deg : circleDegList[selectedCircleNumber] },
+			{
+				duration : "fast",
+				step : function(now) {
+					$(this).css({
+						transform : "rotate(" + now + "deg)"
+					});
+				},
+				complete : function() {
+					rotateFunc = false;
+				}
+			}
+		); */
+		
+		var temp = circles[selectedCircleNumber][0];
+		for (var i = 0; i < 7; i++) {
+			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i + 1];
+		}
+		circles[selectedCircleNumber][7] = temp;
 		
 		new Audio(contextPath + "/resources/audio/left.wav").play();
 		
@@ -73,12 +89,6 @@ function left() {
 
 function right() {
 	if (!rotateFunc) {
-		var temp = circles[selectedCircleNumber][7];
-		for (var i = 7; i > 0; i--) {
-			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i - 1];
-		}
-		circles[selectedCircleNumber][0] = temp;
-		
 		rotateFunc = setInterval(function() {
 			circleDegList[selectedCircleNumber]++;
 			$("#" + circleIdList[selectedCircleNumber]).css({
@@ -94,6 +104,12 @@ function right() {
 				rotateDeg = 0;
 			}
 		}, 4 - selectedCircleNumber);
+		
+		var temp = circles[selectedCircleNumber][7];
+		for (var i = 7; i > 0; i--) {
+			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i - 1];
+		}
+		circles[selectedCircleNumber][0] = temp;
 		
 		new Audio(contextPath + "/resources/audio/right.wav").play();
 		
