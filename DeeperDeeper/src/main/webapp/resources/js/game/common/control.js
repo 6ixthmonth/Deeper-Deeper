@@ -36,83 +36,41 @@ function down() {
 }
 
 // left, right 함수에 사용할 변수
-let rotateFunc = null;
-let rotateDeg = 0;
 let circleIdList = ["A", "B", "C", "D"];
 let circleDegList = [0, 0, 0, 0];
 
 function left() {
-	if (!rotateFunc) {
-		rotateFunc = setInterval(function() {
-			circleDegList[selectedCircleNumber]--;
-			$("#" + circleIdList[selectedCircleNumber]).css({
-				"-webkit-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"-moz-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"-ms-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"-o-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)"
-			});
-			if (++rotateDeg >= 45) {
-				clearInterval(rotateFunc);
-				rotateFunc = null;
-				rotateDeg = 0;
-			}
-		}, 4 - selectedCircleNumber);
-		/* rotateFunc = true;
-		circleDegList[selectedCircleNumber] -= 45;
-		$("#" + circleIdList[selectedCircleNumber]).animate(
-			{ deg : circleDegList[selectedCircleNumber] },
-			{
-				duration : "fast",
-				step : function(now) {
-					$(this).css({
-						transform : "rotate(" + now + "deg)"
-					});
-				},
-				complete : function() {
-					rotateFunc = false;
-				}
-			}
-		); */
-		
-		var temp = circles[selectedCircleNumber][0];
-		for (var i = 0; i < 7; i++) {
-			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i + 1];
-		}
-		circles[selectedCircleNumber][7] = temp;
-		
-		new Audio(contextPath + "/resources/audio/left.wav").play();
-		
-		if (isCleared(0, 0, 0)) clear();
+	circleDegList[selectedCircleNumber] -= 45;
+	$("#" + circleIdList[selectedCircleNumber]).css({
+		"transition" : "transform 0.4s ease 0s",
+		"transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)"
+	});
+	
+	var temp = circles[selectedCircleNumber][0];
+	for (var i = 0; i < 7; i++) {
+		circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i + 1];
 	}
+	circles[selectedCircleNumber][7] = temp;
+	
+	new Audio(contextPath + "/resources/audio/left.wav").play();
+	
+	if (isCleared(0, 0, 0)) clear();
 }
 
 function right() {
-	if (!rotateFunc) {
-		rotateFunc = setInterval(function() {
-			circleDegList[selectedCircleNumber]++;
-			$("#" + circleIdList[selectedCircleNumber]).css({
-				"-webkit-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"-moz-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"-ms-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"-o-transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)",
-				"transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)"
-			});
-			if (++rotateDeg >= 45) {
-				clearInterval(rotateFunc);
-				rotateFunc = null;
-				rotateDeg = 0;
-			}
-		}, 4 - selectedCircleNumber);
-		
-		var temp = circles[selectedCircleNumber][7];
-		for (var i = 7; i > 0; i--) {
-			circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i - 1];
-		}
-		circles[selectedCircleNumber][0] = temp;
-		
-		new Audio(contextPath + "/resources/audio/right.wav").play();
-		
-		if (isCleared(0, 0, 0)) clear();
+	circleDegList[selectedCircleNumber] += 45;
+	$("#" + circleIdList[selectedCircleNumber]).css({
+		"transition" : "transform 0.4s ease 0s",
+		"transform" : "rotate(" + circleDegList[selectedCircleNumber] + "deg)"
+	});
+	
+	var temp = circles[selectedCircleNumber][7];
+	for (var i = 7; i > 0; i--) {
+		circles[selectedCircleNumber][i] = circles[selectedCircleNumber][i - 1];
 	}
+	circles[selectedCircleNumber][0] = temp;
+	
+	new Audio(contextPath + "/resources/audio/right.wav").play();
+	
+	if (isCleared(0, 0, 0)) clear();
 }
