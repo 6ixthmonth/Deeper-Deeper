@@ -1,16 +1,16 @@
-# 자바스크립트 위주의 웹 퍼즐 게임 Deeper Deeper
+# JavaScript 위주의 웹 퍼즐 게임 Deeper Deeper
 <img width="640" height="320" src="https://user-images.githubusercontent.com/42332051/136391023-67158e35-ee5c-4a96-be8f-2c73f6a63a62.gif">
 
 ## 개요
-자바스크립트 위주로 구현한 웹 퍼즐 게임. 게임 화면 구성, 플레이 시간 기록, 스테이지 조작, 클리어 판정 등 주요 핵심 기능들이 모두 자바스크립트로 구현되었다.
+JavaScript 위주로 구현한 웹 퍼즐 게임. 게임 화면 구성, 플레이 시간 기록, 스테이지 조작, 클리어 판정 등 주요 핵심 기능들이 모두 JavaScript로 구현되었다.
 
 ## 개발 환경 및 사용 API
 1. Back-end 및 빌드 도구
    - Java 8
    - Spring Framework 3.1.1
-   - Maven(4.0.0)
+   - Maven 4.0.0
 2. Front-end
-   - HTML5(JSP 2.1), CSS3, JavaScript, jQuery(3.6.0)
+   - HTML5(JSP 2.1), CSS3, JavaScript(ECMAScript6), jQuery(3.6.0)
 3. Database
    - Oracle Database 11g2(Express edition)
    - MyBatis(3.5.7)
@@ -31,7 +31,7 @@
    - *상하좌우 버튼*을 이용해서 조작할 *원반을 선택하고 회전*시킬 수 있다.
    - *모든 길을 맞춰 스테이지를 클리어*하면 다음 스테이지로 이동할 수 있는 버튼을 표시한다.
 4. 랭킹 페이지
-   - <img src="https://user-images.githubusercontent.com/42332051/136391569-3ffffa49-50d2-454e-ac3d-e3c56885531e.png">
+   - <img width="640" height="320" src="https://user-images.githubusercontent.com/42332051/136391569-3ffffa49-50d2-454e-ac3d-e3c56885531e.png">
    - 클리어 스테이지 수, 클리어 시간 순으로 상위 10명의 기록을 표시한다.
 
 ## 게임 동작 원리
