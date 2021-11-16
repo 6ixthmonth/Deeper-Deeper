@@ -1,8 +1,8 @@
-# Deeper Deeper
+# JavaScript 위주로 구현한 퍼즐 장르의 웹 게임 - Deeper Deeper
 <img width="640" height="320" src="https://user-images.githubusercontent.com/42332051/136391023-67158e35-ee5c-4a96-be8f-2c73f6a63a62.gif">
 
 ## 개요
-JavaScript 위주로 구현한 퍼즐 장르의 웹 게임. 게임 화면 구성, 플레이 시간 기록, 스테이지 조작, 클리어 판정 등 주요 핵심 기능들이 모두 JavaScript로 구현되었다.
+원반을 회전시켜 원반에 표시된 길을 목적지까지 하나로 잇는 게임. 게임 화면 구성, 플레이 시간 기록, 스테이지 조작, 클리어 판정 등 주요 핵심 기능들이 모두 JavaScript 및 jQuery로 구현되었다.
 
 ## 개발 환경 및 사용 API
 1. Back-end 및 빌드 도구
