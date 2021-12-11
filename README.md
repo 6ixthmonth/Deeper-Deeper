@@ -1,5 +1,5 @@
 # JavaScript 위주로 구현한 퍼즐 장르의 웹 게임 - Deeper Deeper
-<img width="640" height="360" src="https://user-images.githubusercontent.com/42332051/136391023-67158e35-ee5c-4a96-be8f-2c73f6a63a62.gif">
+<img width="960" height="540" src="https://user-images.githubusercontent.com/42332051/136391023-67158e35-ee5c-4a96-be8f-2c73f6a63a62.gif">
 
 ## 개요
 원반을 회전시켜 원반에 표시된 길을 목적지까지 하나로 잇는 게임. 게임 화면 구성, 플레이 시간 기록, 스테이지 조작, 클리어 판정 등 주요 핵심 기능들이 모두 JavaScript 및 jQuery로 구현되었다.
@@ -19,19 +19,19 @@
 
 ## 주요 기능
 1. 메인 페이지
-   - <img width="640" height="360" src="https://user-images.githubusercontent.com/42332051/136391136-dd695cf2-ef39-4459-b6f4-3dc65a32bfa3.gif">
+   - <img width="960" height="540" src="https://user-images.githubusercontent.com/42332051/136391136-dd695cf2-ef39-4459-b6f4-3dc65a32bfa3.gif">
    - 메뉴 버튼을 표시하고, 사용자가 선택한 *언어 설정값을 세션에 저장*하여 **화면을 동적으로 표시**한다.
 2. 게임 방법 페이지
-   - <img width="640" height="360" src="https://user-images.githubusercontent.com/42332051/136391168-ea66444a-94a5-4aa5-a9a4-ec874cd950d7.png">
-   - <img width="640" height="360" src="https://user-images.githubusercontent.com/42332051/136391172-8eef3d24-fdcc-489a-97f1-10b11cd3bd53.png">
+   - <img width="960" height="540" src="https://user-images.githubusercontent.com/42332051/136391168-ea66444a-94a5-4aa5-a9a4-ec874cd950d7.png">
+   - <img width="960" height="540" src="https://user-images.githubusercontent.com/42332051/136391172-8eef3d24-fdcc-489a-97f1-10b11cd3bd53.png">
    - 게임 방법을 소개한다.
 3. 게임 시작 페이지
-   - <img width="640" height="360" src="https://user-images.githubusercontent.com/42332051/136391533-021b66dc-3f51-4e8a-8bfc-fcb34188f241.gif">
+   - <img width="960" height="540" src="https://user-images.githubusercontent.com/42332051/136391533-021b66dc-3f51-4e8a-8bfc-fcb34188f241.gif">
    - START 버튼을 클릭하면 자바스크립트를 통해 게임 요소를 동적으로 생성, 화면에 표시하고 플레이 시간을 기록한다.
    - *상하좌우 버튼*을 이용해서 조작할 *원반을 선택하고 회전*시킬 수 있다.
    - *모든 길을 맞춰 스테이지를 클리어*하면 다음 스테이지로 이동할 수 있는 버튼을 표시한다.
 4. 랭킹 페이지
-   - <img width="640" height="360" src="https://user-images.githubusercontent.com/42332051/136391569-3ffffa49-50d2-454e-ac3d-e3c56885531e.png">
+   - <img width="960" height="540" src="https://user-images.githubusercontent.com/42332051/136391569-3ffffa49-50d2-454e-ac3d-e3c56885531e.png">
    - 클리어 스테이지 수, 클리어 시간 순으로 상위 10명의 기록을 표시한다.
 
 ## 게임 동작 원리
