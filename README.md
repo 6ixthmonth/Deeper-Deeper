@@ -6,7 +6,7 @@
 
 ---
 
-## 개발 환경 및 사용 API
+## 개발 환경 및 사용 기술
 
 1. Back-end 및 빌드 도구
    - Java 8
@@ -15,10 +15,8 @@
 2. Front-end
    - HTML5(JSP 2.1), CSS3, JavaScript(ECMAScript6), jQuery(3.6.0)
 3. Database
-   - Oracle Database 11g2(Express edition)
+   - Oracle Database(11g Release2 Express edition)
    - MyBatis(3.5.7)
-4. Web App Server
-   - Apache Tomcat 9.0.50
 
 ---
 
